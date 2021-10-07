@@ -4,11 +4,6 @@ import pickle
 from logisticregressionwiththresholdclass import LogisticRegressionwithThreshold
 import numpy as np
 
-scaler = StandardScaler()
-
-
- 
-
 
 
 occ_woman = st.radio('Occupation of Lady',  ('farming/semi-skilled/unskilled', '"white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others'))
@@ -55,12 +50,9 @@ if predict:
     inputs.append(religious_value)
     inputs.append(edu_value)
     
-    # all_input_scaled = scaler.fit([inputs])
-    # print(all_input_scaled)
-    # all_input_scaled = np.array(all_input_scaled).reshape(1,-1)
+    
     
     scaling= pickle.load(open('notebook/affair_scaler.pickle', 'rb'))
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
     input_scaled = scaling.transform([inputs])
     input = np.array(input_scaled).reshape(1,-1)
    
