@@ -8,8 +8,7 @@ input_required =['occ_2', 'occ_3', 'occ_4', 'occ_5', 'occ_6', 'occ_husb_2', 'occ
        'occ_husb_4', 'occ_husb_5', 'occ_husb_6', 'rate_marriage', 'age',
        'yrs_married', 'children', 'religious', 'educ']
 
-"""occupation: woman's occupation (
-    1 = student, 2 = farming/semi-
-skilled/unskilled, 3 = "white collar", 4 =     teacher/nurse/writer/technician/skilled, 5 = managerial/business, 6 =
-professional with advanced degree)
-"""
+
+occ_woman = st.radio('Occupation of Lady',  ('farming/semi-skilled/unskilled', '"white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others'))
+occ_man   = st.radio('Occupation of Man',  ('farming/semi-skilled/unskilled', '"white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others'))
+
