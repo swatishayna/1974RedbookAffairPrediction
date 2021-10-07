@@ -55,11 +55,13 @@ if predict:
     inputs.append(edu_value)
     
     all_input_scaled = scaler.fit([inputs])
-    model = pickle.load(open('affair_predict.pickle', 'rb'))
-    output = model.predict(all_input_scaled)
-    if output == 1:
-        st.header('There are high chances that the woman would have extramarital affair')
-    else:
-        st.header('There are high chances that the woman would not have extramarital affair')
+    with open('affair_predict.pickle', 'rb') as f:
+        model = pickle.load(f)
+    # model = pickle.load(open('affair_predict.pickle', 'rb'))
+        output = model.predict(all_input_scaled)
+        if output == 1:
+            st.header('There are high chances that the woman would have extramarital affair')
+        else:
+            st.header('There are high chances that the woman would not have extramarital affair')
         
         
