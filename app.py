@@ -3,7 +3,7 @@ from sklearn.preprocessing import StandardScaler
 scaler = StandardScaler()
 
 
-
+ 
 
 
 
@@ -19,3 +19,54 @@ educ= st.radio('level of education', ('grade school','high school', 'some colleg
 predict: st.button('Predict')
 
 print(occ_woman,occ_man,rate_marriage,age,yrs_married,children,religious,educ)
+
+d_occupation_women = {
+    'occ_2' : 0,
+    'occ_3' : 0, 
+    'occ_4' : 0, 
+    'occ_5' : 0, 
+    'occ_6' : 0
+}
+d_occupation_man = {
+    'occ_husb_2' : 0,
+    'occ_husb_3' : 0, 
+    'occ_husb_4' : 0, 
+    'occ_husb_5' : 0, 
+    'occ_husb_6' : 0
+}
+
+
+if predict:
+    if occ_woman == 'farming/semi-skilled/unskilled':
+        d_occupation_women['occ_2'] = 1
+    elif occ_woman == 'white collar':
+        d_occupation_women['occ_3'] = 1
+    elif occ_woman == 'teacher/nurse/writer/technician/skilled':
+        d_occupation_women['occ_4'] = 1
+    elif occ_woman == 'managerial/business':
+        d_occupation_women['occ_5'] = 1
+    elif occ_woman == 'professional with advanced degree':
+        d_occupation_women['occ_6'] = 1
+   
+    if occ_man == 'farming/semi-skilled/unskilled':
+        d_occupation_man['occ_husb_2'] = 1
+    elif occ_man == 'white collar':
+        d_occupation_man['occ_husb_3'] = 1
+    elif occ_man == 'teacher/nurse/writer/technician/skilled':
+        d_occupation_man['occ_husb_4'] = 1
+    elif occ_man == 'managerial/business':
+        d_occupation_man['occ_husb_5'] = 1
+    elif occ_man == 'professional with advanced degree':
+        d_occupation_man['occ_husb_6'] = 1
+    
+    inputs =[]
+    inputs.append(d_occupation_women.values())
+    inputs.append(d_occupation_man.values())
+    inputs.append(rate_marriage)
+    inputs.append(age)
+    inputs.append(yrs_married)
+    inputs.append(children)
+    inputs.append(religious)
+    inputs.append(educ)
+    
+    st.write(inputs)
