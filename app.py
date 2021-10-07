@@ -58,15 +58,24 @@ if predict:
         d_occupation_man['occ_husb_5'] = 1
     elif occ_man == 'professional with advanced degree':
         d_occupation_man['occ_husb_6'] = 1
-    
+
+
+    d_rate_marriage = ['VeryPoor','Poor','Good','VeryGood','Excellent']
+    rate_marriage_value = d_rate_marriage.index(rate_marriage) + 1
+    d_religious = ['Not at all', 'Yes but not much', 'Yes', 'Highly Religious']
+    religious_value = d_religious.index(religious) + 1
+    d_edu =  ['grade school','high school', 'some college', 'college graduate','some graduate school','advanced degree']
+    edu_value = d_edu.index(educ) + 1
+
+
     inputs =[]
-    inputs.append(d_occupation_women.values())
-    inputs.append(d_occupation_man.values())
-    inputs.append(rate_marriage)
+    inputs.extend(d_occupation_women.values())
+    inputs.extend(d_occupation_man.values())
+    inputs.append(rate_marriage_value)
     inputs.append(age)
     inputs.append(yrs_married)
     inputs.append(children)
-    inputs.append(religious)
+    inputs.append(religious_value)
     inputs.append(educ)
     
     st.write(inputs)
