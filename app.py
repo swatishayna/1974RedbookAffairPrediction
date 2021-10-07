@@ -15,3 +15,5 @@ yrs_married = st.slider('Number of Married Years', min_value = 0, max_value=23)
 children = st.number_input('ChildrenCount', min_value =0, max_value =5)
 religious = st.radio('Are You religious?',('Not at all', 'Yes but not much', 'Yes', 'Highly Religious'))
 educ= st.radio('level of education', ('grade school','high school', 'some college', 'college graduate','some graduate school','advanced degree'))
+
+print(occ_woman,occ_man,rate_marriage,age,yrs_married,children,religious,educ)
