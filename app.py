@@ -1,8 +1,9 @@
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
 import pickle
-import logisticregressionwiththresholdclass
-from notebook.LogisticRegression import logisticregressionwiththresholdclass
+from logisticregressionwiththresholdclass import LogisticRegressionwithThreshold
+import numpy as np
+
 scaler = StandardScaler()
 
 
@@ -54,14 +55,19 @@ if predict:
     inputs.append(religious_value)
     inputs.append(edu_value)
     
-    all_input_scaled = scaler.fit([inputs])
-    with open('affair_predict.pickle', 'rb') as f:
-        model = pickle.load(f)
-    # model = pickle.load(open('affair_predict.pickle', 'rb'))
-        output = model.predict(all_input_scaled)
-        if output == 1:
-            st.header('There are high chances that the woman would have extramarital affair')
-        else:
-            st.header('There are high chances that the woman would not have extramarital affair')
+    # all_input_scaled = scaler.fit([inputs])
+    # print(all_input_scaled)
+    # all_input_scaled = np.array(all_input_scaled).reshape(1,-1)
+    
+    scaling= pickle.load(open('notebook/affair_scaler.pickle', 'rb'))
+    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    input_scaled = scaling.transform([inputs])
+    input = np.array(input_scaled).reshape(1,-1)
+   
+    output = LogisticRegressionwithThreshold('l1','liblinear').output(input)
+    if output == 1:
+        st.header('There are high chances that the woman would have extramarital affair')
+    else:
+        st.header('There are high chances that the woman would not have extramarital affair')
         
         
