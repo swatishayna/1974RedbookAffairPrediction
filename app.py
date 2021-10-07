@@ -1,6 +1,8 @@
 import streamlit as st
 from sklearn.preprocessing import StandardScaler
 import pickle
+import logisticregressionwiththresholdclass
+from notebook.LogisticRegression import logisticregressionwiththresholdclass
 scaler = StandardScaler()
 
 
