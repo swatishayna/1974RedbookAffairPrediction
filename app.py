@@ -5,7 +5,7 @@ from logisticregressionwiththresholdclass import LogisticRegressionwithThreshold
 import numpy as np
 
 
-
+st.title('1974Redbook Affair Prediction App')
 occ_woman = st.radio('Occupation of Lady',  ('farming/semi-skilled/unskilled', '"white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others'))
 occ_man   = st.radio('Occupation of Man',  ('farming/semi-skilled/unskilled', '"white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others'))
 rate_marriage = st.radio('Rating Input of Marriage Life', ('VeryPoor','Poor','Good','VeryGood','Excellent'))
