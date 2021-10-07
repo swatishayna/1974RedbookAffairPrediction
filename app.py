@@ -52,7 +52,7 @@ if predict:
     
     
     
-    scaling= pickle.load(open('notebook/affair_scaler.pickle', 'rb'))
+    scaling= pickle.load(open('affair_scaler.pickle', 'rb'))
     input_scaled = scaling.transform([inputs])
     input = np.array(input_scaled).reshape(1,-1)
    
