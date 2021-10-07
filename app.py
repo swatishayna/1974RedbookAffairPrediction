@@ -34,30 +34,41 @@ d_occupation_man = {
     'occ_husb_5' : 0, 
     'occ_husb_6' : 0
 }
-
-
+occupations = ['farming/semi-skilled/unskilled', 'white collar', 'teacher/nurse/writer/technician/skilled', 'managerial/business','professional with advanced degree','others']
+d_woman_occ_value = [0,0,0,0,0]
+d_man_occ_value = [0,0,0,0,0]
 if predict:
-    if occ_woman == 'farming/semi-skilled/unskilled':
-        d_occupation_women['occ_2'] = 1
-    elif occ_woman == 'white collar':
-        d_occupation_women['occ_3'] = 1
-    elif occ_woman == 'teacher/nurse/writer/technician/skilled':
-        d_occupation_women['occ_4'] = 1
-    elif occ_woman == 'managerial/business':
-        d_occupation_women['occ_5'] = 1
-    elif occ_woman == 'professional with advanced degree':
-        d_occupation_women['occ_6'] = 1
+    if occ_woman!='others':
+        i = occupations.index(occ_woman)
+        d_woman_occ_value[i]=1
+
+    if occ_woman!='others':
+        i = occupations.index(occ_woman)
+        d_man_occ_value[i]=1
+
+
+
+    # if occ_woman == 'farming/semi-skilled/unskilled':
+    #     d_occupation_women['occ_2'] = 1
+    # elif occ_woman == 'white collar':
+    #     d_occupation_women['occ_3'] = 1
+    # elif occ_woman == 'teacher/nurse/writer/technician/skilled':
+    #     d_occupation_women['occ_4'] = 1
+    # elif occ_woman == 'managerial/business':
+    #     d_occupation_women['occ_5'] = 1
+    # elif occ_woman == 'professional with advanced degree':
+    #     d_occupation_women['occ_6'] = 1
    
-    if occ_man == 'farming/semi-skilled/unskilled':
-        d_occupation_man['occ_husb_2'] = 1
-    elif occ_man == 'white collar':
-        d_occupation_man['occ_husb_3'] = 1
-    elif occ_man == 'teacher/nurse/writer/technician/skilled':
-        d_occupation_man['occ_husb_4'] = 1
-    elif occ_man == 'managerial/business':
-        d_occupation_man['occ_husb_5'] = 1
-    elif occ_man == 'professional with advanced degree':
-        d_occupation_man['occ_husb_6'] = 1
+    # if occ_man == 'farming/semi-skilled/unskilled':
+    #     d_occupation_man['occ_husb_2'] = 1
+    # elif occ_man == 'white collar':
+    #     d_occupation_man['occ_husb_3'] = 1
+    # elif occ_man == 'teacher/nurse/writer/technician/skilled':
+    #     d_occupation_man['occ_husb_4'] = 1
+    # elif occ_man == 'managerial/business':
+    #     d_occupation_man['occ_husb_5'] = 1
+    # elif occ_man == 'professional with advanced degree':
+    #     d_occupation_man['occ_husb_6'] = 1
 
 
     d_rate_marriage = ['VeryPoor','Poor','Good','VeryGood','Excellent']
@@ -69,8 +80,8 @@ if predict:
 
 
     inputs =[]
-    inputs.extend(d_occupation_women.values())
-    inputs.extend(d_occupation_man.values())
+    inputs.extend(d_woman_occ_value)
+    inputs.extend(d_man_occ_value)
     inputs.append(rate_marriage_value)
     inputs.append(age)
     inputs.append(yrs_married)
